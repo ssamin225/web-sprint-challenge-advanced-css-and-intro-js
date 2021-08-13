@@ -234,8 +234,6 @@ function getArtistByIndex(array, num) {
   return `the artist at index ${num} is ${array[num].name}`;
 }
 
-console.log(getArtistByIndex(artists, 0));
-
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use get20s to do the following: 
@@ -248,12 +246,12 @@ If correct, the function should return ["Salvador Dali", "Frida Kahlo"]*/
 
 function get20s(array) {
   const newArray = [];
-  let matches = []
+  let spl = [];
 
-  for (let i = 0; i < artists.length; i++) {
-    matches = array[i].years.match(/- 19/);
+  for (let i = 0; i < array.length; i++) {
+    spl = array[i].years.split('-');
 
-    if (artists[i].years.startsWith('19') && matches != null) {
+    if (spl[0] >= 1900 && spl[1] < 2000) {
       newArray.push(array[i].name)
     }
 
@@ -261,9 +259,6 @@ function get20s(array) {
 
   return newArray;
 }
-
-console.log(get20s(artists));
-
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use removeArtist to do the following:
@@ -274,10 +269,10 @@ Use removeArtist to do the following:
 
 For example, if removeArtist is invoked with the artists array and the number 0, it will remove Amedeo Modigliani from our dataset and return the number 19. */
 
-function removeArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
+function removeArtist(array, num) {
+  array.splice(num, 1);
+  return array.length
 }
-
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
 Use addArtist to do the following: 
@@ -295,23 +290,42 @@ Use addArtist to do the following:
 
 Example: addArtist(artists) should return the artists array with the above object added to the end of the array. */
 
-function addArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
-}
+function addArtist(array) {
 
+  const artistObj = { 
+    id: 20,
+    name: 'Your Name Here', 
+    years: 'Your Birth Year - current day',
+    genre: 'Web Design', 
+    nationality: 'Antarctica',
+    bio: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum, repellendus. Animi corporis, minima aliquid voluptatum totam dolore aperiam, amet, ad eum neque id odio placeat architecto eligendi fuga corrupti sed.'
+  }
+
+  array.push(artistObj)
+  return array;
+}
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Use lotsOfArt to do the following: 
-1. Receive an array 
+1. Receive an array
 2. Return an array with names of artists in the received array who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ... "Albrecht Dürer"]*/
 
-function lotsOfArt(/*Your Code Here*/) {
-  /*Your Code Here*/
-}
+function lotsOfArt(array) {
+  const manyArt = [];
 
+  for (let i = 0; i < array.length; i++) {
+
+    if (array[i].paintings > 100) {
+      manyArt.push(array[i].name);
+    }
+
+  }
+
+  return manyArt;
+}
 
 /* ***** END OF TASKS ***** */
 
